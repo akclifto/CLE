@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text.Json;
 using System.Threading.Tasks;
 using WebTut.Website.Models;
@@ -39,15 +40,17 @@ namespace WebTut.Website.Services
         {
             var products = GetProducts();
 
-            if (products.First(x => x.Id == productId).Ratings == null)
+            // uses LINQ, which is a sql-like language
+            var query = products.First(x => x.Id == productId);
+
+            if(query.Ratings == null)
             {
-                products.First(x => x.Id == productId).Ratings = new int[] { rating };
-            }
-            else
+                query.Ratings = new int[] { rating };
+            } else
             {
-                var ratings = products.First(x => x.Id == productId).Ratings.ToList();
+                var ratings = query.Ratings.ToList();
                 ratings.Add(rating);
-                products.First(x => x.Id == productId).Ratings = ratings.ToArray();
+                query.Ratings = ratings.ToArray();
             }
 
             using (var outputStream = File.OpenWrite(JsonFileName))
@@ -59,7 +62,7 @@ namespace WebTut.Website.Services
                         Indented = true
                     }),
                     products
-                );
+                    );
             }
         }
     }

@@ -50,6 +50,28 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    @if (voteCount == 0)
+                    {
+                        <span> Be the first to vote for this product!</span>
+                    }
+                    else
+                    {
+                        <span>@voteCount @voteLabel </span>
+                    }
+
+                    @for (int i = 1; i < 6; i++)
+                    {
+                        var currentStar = i;
+                        if (i <= currentRating)
+                        //using font-awesome for this from link
+                        {
+                            <span class="fa-star fa checked" @onclick="(e => SubmitRating(currentStar))"></span>
+                        }
+                        else
+                        {
+                            <span class="fa-star fa" @onclick="(e => SubmitRating(currentStar))"></span>
+                        }
+                    }
 
                 </div>
             </div>
@@ -66,11 +88,12 @@
     Product selectProduct;
     string selectedProductId;
 
-
+    //ctor
     void SelectProduct(string productId)
     {
         selectedProductId = productId;
         selectProduct = ProductService.GetProducts().First(x => x.Id == productId);
+        GetCurrentRating();
     }
 
     /*Ratings related code*/
@@ -84,13 +107,27 @@
         {
             currentRating = 0;
             voteCount = 0;
-        } 
+        }
         else
         {
             voteCount = selectProduct.Ratings.Count();
             voteLabel = voteCount > 1 ? "Votes" : "Vote";
-            currentRating = selectProduct.Ratings.Average();
+            currentRating = selectProduct.Ratings.Sum() / voteCount;
         }
+
+        //debug to check average
+        System.Console.WriteLine($"Current rating for {selectProduct.Id} is: " +
+            $"{currentRating}");
+    }
+
+    void SubmitRating (int rating)
+    {
+        System.Console.WriteLine($"Rating received for {selectProduct.Id} is: " +
+            $"{rating}");
+
+        ProductService.AddRating(selectedProductId, rating);
+        //re-assert how the product looks on the UI
+        SelectProduct(selectedProductId);
     }
 
 

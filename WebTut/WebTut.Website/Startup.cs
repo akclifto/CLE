@@ -28,6 +28,7 @@ namespace WebTut.Website
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddServerSideBlazor();
             services.AddControllers();
             services.AddTransient<JsonFileProductService>();
         }
@@ -57,6 +58,7 @@ namespace WebTut.Website
             {
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
+                endpoints.MapBlazorHub();
                 //a bad way of making a web API for "products" embedded in C#, works but not user-friendly.  
                 // this is just spitting out the contents of the products.json file and adding to webite/products page
                 //endpoints.MapGet("/products", (context) =>

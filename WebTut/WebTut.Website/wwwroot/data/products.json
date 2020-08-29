@@ -10,20 +10,7 @@
       5,
       5,
       4,
-      1,
-      5,
-      4,
-      3,
-      1,
-      2,
-      3,
-      4,
-      5,
-      5,
-      5,
-      5,
-      5,
-      5
+      1
     ]
   },
   {
@@ -82,7 +69,10 @@
     "Url": "https://twitter.com/sailorhg/status/1090122822007963648",
     "Title": "Pastel hardware kit",
     "Description": "Pastel hardware kits complete with custom manufactured pastel alligator clips.",
-    "Ratings": null
+    "Ratings": [
+      5,
+      5
+    ]
   },
   {
     "Id": "sailorhg-led",
@@ -100,7 +90,11 @@
     "Url": "https://www.instagram.com/p/BNvESj-j8PI/",
     "Title": "Black Sweatshirt",
     "Description": "Black sweatshirt hoody with the Sick of the Internet logo.",
-    "Ratings": null
+    "Ratings": [
+      5,
+      3,
+      5
+    ]
   },
   {
     "Id": "selinazawacki-soi-pins",
@@ -136,7 +130,9 @@
     "Url": "https://www.vogueandcode.com/shop/pretty-girls-code-tee",
     "Title": "Pretty Girls Code Tee",
     "Description": "Everyone\u2019s favorite design is finally here on a tee! The Pretty Girls Code crew-neck tee is available in a soft pink with red writing.",
-    "Ratings": null
+    "Ratings": [
+      1
+    ]
   },
   {
     "Id": "vogueandcode-ruby-sis-2",
@@ -163,6 +159,12 @@
     "Url": "https://www.instagram.com/BEXlpiZCnJ3",
     "Title": "Floppy Crop",
     "Description": "Used up the Diskette fabric today to make 2 of these crops.",
-    "Ratings": null
+    "Ratings": [
+      5,
+      4,
+      5,
+      1,
+      1
+    ]
   }
 ]

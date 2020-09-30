@@ -5,5 +5,5 @@ import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import PFRouter from './playground/portfolio/routers/pfRouter';
 
-ReactDOM.render(<PFRouter/>, document.getElementById('app'));
+ReactDOM.render(<AppRouter/>, document.getElementById('app'));
 

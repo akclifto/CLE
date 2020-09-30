@@ -7,7 +7,7 @@ const PFItem = (props) => {
     return (
         <div>
         <h1>This is What I Have Done</h1>
-            This page is for the item with the id of:  {props.match.params.id}
+            <p>This page is for the item with the id of:  {props.match.params.id}</p>
             <div>
                 <Link to="/portfolio">Go Back</Link>
             </div>

@@ -17,6 +17,12 @@ webpack-dev-server
 babel-plugin-transform-class-properties
 react-modal
 
+** specific to budget app
+//used on the context of a web appl
+react-router-dom
+//used in the context of a native application (desktop, etc)
+react-router-native   //did not use this one
+
 **styling yarn adds
 
 style-loader 

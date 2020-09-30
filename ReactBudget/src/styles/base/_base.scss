@@ -21,3 +21,9 @@ button {
 button:disabled {
     cursor: default;
 }
+
+
+.is-active {
+    color: red;
+    font-weight: bold;
+}

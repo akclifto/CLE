@@ -24,9 +24,11 @@ react-router-dom
 react-router-native   //did not use this one
 
 **styling yarn adds
-
 style-loader 
 css-loader
 sass-loader
 node-sass
 normalize.css
+
+**redux related yarn adds
+redux

@@ -1,19 +1,40 @@
 import { createStore } from 'redux';
 
+// Action generators - functions that return action objects
+
+
+
+const incrCount = ( { incrementBy = 1 } = {}) => ({ 
+    type: 'INCREMENT',
+    incrementBy
+});
+
+const decrCount = ( { decrementBy = 1 } = {}) => ({
+    type: 'DECREMENT',
+    decrementBy
+});
+
+const resetCount = () => ({
+    type: 'RESET'
+});
+
+const setCount = ({count}) => ({
+    type: 'SET',
+    count
+});
+
 const store = createStore((state = { count: 0 }, action) => {
 
     switch (action.type) {
 
         case 'INCREMENT' : 
-            const incrementBy = typeof action.incrementBy == 'number' ? action.incrementBy : 1;
             return {
-                count: state.count + incrementBy
+                count: state.count + action.incrementBy
             };
 
         case 'DECREMENT':
-            const decrementBy = typeof action.decrementBy == 'number' ? action.decrementBy : 1;
             return {
-                count: state.count - decrementBy
+                count: state.count - action.decrementBy
             };
 
         case 'RESET':
@@ -40,38 +61,31 @@ const unsub = store.subscribe(() => {
 // Actions - obj that gets sent to the redux store.  Below are actions.
 
 // We want to incr count, decr count
-store.dispatch({
-    type: 'INCREMENT',
-    incrementBy: 5
-});
-store.dispatch({
-    type: 'INCREMENT',
-    incrementBy: 10
-});
+// store.dispatch({
+//     type: 'INCREMENT',
+//     incrementBy: 5
+// });
+
+store.dispatch(incrCount({ incrementBy: 5 }));
+store.dispatch(incrCount({ incrementBy: 10 }));
+store.dispatch(incrCount());
+
 
 //to unsuscribe from something to stop watching it, call the var created with the subscribe function.
 // unsub();
 
-store.dispatch({
-    type: 'INCREMENT',
-});
-
-store.dispatch({
-    type: 'DECREMENT',
-    decrementBy: 5
-});
-
-store.dispatch({
-    type: 'DECREMENT'
-});
-
+store.dispatch(incrCount({ decrementBy: 5 }));
+store.dispatch(decrCount());
 // We want to reset count
-store.dispatch({
-    type: 'RESET'
-});
+store.dispatch(resetCount());
 
-store.dispatch({
-    type: 'SET',
-    count: 505
-});
+// store.dispatch({
+//     type: 'RESET'
+// });
+
+store.dispatch(setCount({ count: 505 }))
+// store.dispatch({
+//     type: 'SET',
+//     count: 505
+// });
 

@@ -1,4 +1,7 @@
-
+/**
+ * Object Desctructuring
+ * 
+ */
 const person = {
     name: 'adam',
     age: 34,
@@ -33,3 +36,25 @@ const book = {
 const { name: publisherName = 'Self-published' } = book.publisher;
 
 console.log(publisherName); //Penguin or default to self-published
+
+
+/**
+ * Array Desctructuring
+ * 
+*/
+
+
+const address = ['1234 Fake Street', 'Phoenix', 'AZ', '85004'];
+// const address = [];
+
+//setting defaults, and pulling some info from array
+const [ , cityName = 'Albany', state = 'New York', ] = address;
+
+console.log(`You are in ${cityName}, ${state}.`);
+
+
+const menu = ['Coffee (hot)', '$2.00', '$2.50','$2.75'];
+
+const [item, , mediumPrice, ] = menu;
+
+console.log(`A medium ${item} costs ${mediumPrice}.`);

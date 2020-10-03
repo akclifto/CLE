@@ -58,3 +58,6 @@ const menu = ['Coffee (hot)', '$2.00', '$2.50','$2.75'];
 const [item, , mediumPrice, ] = menu;
 
 console.log(`A medium ${item} costs ${mediumPrice}.`);
+
+// My questions ???  What if the array is very long, how to pull dynamically?
+// My questions ???  What if we don't know the array structure ahead of coding it?

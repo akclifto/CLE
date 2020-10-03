@@ -32,3 +32,6 @@ normalize.css
 
 **redux related yarn adds
 redux
+
+// lib to generate unique id's
+uuid

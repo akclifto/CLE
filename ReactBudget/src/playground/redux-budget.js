@@ -42,16 +42,26 @@ const addExpense = (
 });
 
 // REMOVE_EXPENSE
-const removeExpense = ( { id } = {} ) => ({
+const removeExpense = ({ id } = {}) => ({
     type: 'REMOVE_EXPENSE',
     id
 });
 
 // EDIT_EXPENSE
+const editExpense = (id, updates) => ({
+    type: 'EDIT_EXPENSE',
+    id,
+    updates
+});
+
+// SET_TEXT_FILTER
+const setTextFilter = (text = '') => ({
+    type: 'SET_TEXT_FILTER',
+    text
+});
 
 // SET_START_DATE
 // SET_END_DATE
-// SET_TEXT_FILTER
 
 // SORT_BY_DATE
 // SORT_BY_AMOUNT
@@ -63,17 +73,28 @@ const expensesReducerDefaultState = [];
 const expensesReducer = (state = expensesReducerDefaultState, action) => {
 
     switch (action.type) {
+
         case 'ADD_EXPENSE':
             return [
                 ...state,
                 action.expense
             ];
-        case 'REMOVE_EXPENSE':
-            return state.filter(( { id } ) => id !== action.id);
-        case 'EDIT_EXPENSE':
-            return {
 
-            };
+        case 'REMOVE_EXPENSE':
+            return state.filter(({ id }) => id !== action.id);
+
+        case 'EDIT_EXPENSE':
+            return state.map((expense) => {
+                if(expense.id === action.id) {
+                    return {
+                        ...expense,
+                        ...action.updates
+                    };
+                } else {
+                    return expense;
+                }
+            });
+
         default:
             return state;
 
@@ -96,7 +117,8 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
     switch (action.type) {
         case 'SET_TEXT_FILTER':
             return {
-
+                ...state,
+                text: action.text
             };
         case 'SORT_BY_DATE':
             return {
@@ -126,12 +148,12 @@ const unsub = store.subscribe(() => {
     console.log(store.getState());
 });
 
-store.dispatch(addExpense({ description: 'rent', amount: 100 }));
+const toEdit = store.dispatch(addExpense({ description: 'rent', amount: 100 }));
 const toRemove = store.dispatch(addExpense({ description: 'bills', amount: 50000 }));
 store.dispatch(addExpense({ description: 'tickets', amount: 2300 }));
 
-store.dispatch(removeExpense( { id: toRemove.expense.id } ));
+store.dispatch(removeExpense({ id: toRemove.expense.id }));
 
-
-
+store.dispatch(editExpense(toEdit.expense.id, { amount: 800 } ));
+store.dispatch(setTextFilter('rent'));
 

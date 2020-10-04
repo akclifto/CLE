@@ -16,6 +16,7 @@ babel-loader
 webpack-dev-server
 babel-plugin-transform-class-properties
 react-modal
+babel-plugin-transform-object-rest-spread
 
 ** specific to budget app
 //used on the context of a web appl

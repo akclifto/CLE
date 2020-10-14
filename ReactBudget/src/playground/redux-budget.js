@@ -61,10 +61,26 @@ const setTextFilter = (text = '') => ({
 });
 
 // SET_START_DATE
+const setStartDate = (startDate) => ({
+    type: 'SET_START_DATE',
+    startDate
+});
+
 // SET_END_DATE
+const setEndDate = (endDate) => ({
+    type: 'SET_END_DATE',
+    endDate
+});
 
 // SORT_BY_DATE
+const sortbyDate = () => ({
+    type: 'SORT_BY_DATE'
+});
+
 // SORT_BY_AMOUNT
+const sortByAmount = () => ({
+    type: 'SORT_BY_AMOUNT'
+});
 
 // Expenses Reducer
 
@@ -115,19 +131,37 @@ const filtersReducerDefaultState = {
 const filtersReducer = (state = filtersReducerDefaultState, action) => {
 
     switch (action.type) {
+
         case 'SET_TEXT_FILTER':
             return {
                 ...state,
                 text: action.text
             };
+
         case 'SORT_BY_DATE':
             return {
-
+                ...state,
+                sortBy: 'date'
             };
+
         case 'SORT_BY_AMOUNT':
             return {
-
+                ...state,
+                sortBy: 'amount'
             };
+
+        case 'SET_START_DATE':
+            return {
+                ...state,
+                startDate: action.startDate
+            };
+
+        case 'SET_END_DATE':
+            return {
+                ...state,
+                endDate: action.endDate
+            };
+        
         default:
             return state;
     }
@@ -148,12 +182,21 @@ const unsub = store.subscribe(() => {
     console.log(store.getState());
 });
 
-const toEdit = store.dispatch(addExpense({ description: 'rent', amount: 100 }));
-const toRemove = store.dispatch(addExpense({ description: 'bills', amount: 50000 }));
-store.dispatch(addExpense({ description: 'tickets', amount: 2300 }));
+// const toEdit = store.dispatch(addExpense({ description: 'rent', amount: 100 }));
+// const toRemove = store.dispatch(addExpense({ description: 'bills', amount: 50000 }));
+// store.dispatch(addExpense({ description: 'tickets', amount: 2300 }));
 
-store.dispatch(removeExpense({ id: toRemove.expense.id }));
+// store.dispatch(removeExpense({ id: toRemove.expense.id }));
 
-store.dispatch(editExpense(toEdit.expense.id, { amount: 800 } ));
-store.dispatch(setTextFilter('rent'));
+// store.dispatch(editExpense(toEdit.expense.id, { amount: 800 } ));
+// store.dispatch(setTextFilter('rent'));
 
+// //filters reducers
+// store.dispatch(sortByAmount());
+// store.dispatch(sortbyDate());
+
+
+store.dispatch(setStartDate(125));
+store.dispatch(setStartDate());
+store.dispatch(setEndDate(300));
+store.dispatch(setEndDate());

@@ -167,7 +167,7 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
 
 };
 
-// timestamps (milliseconds)
+// timestamps (milliseconds) explanation:
 // timestampt 0 == Jan 1 00:00 1970 (unix epoch_)
 // 33400, 10, -203 all valid
 

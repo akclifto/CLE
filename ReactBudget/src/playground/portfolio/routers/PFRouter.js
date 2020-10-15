@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom';
-import PFHeader from '../../portfolio/components/PFHeader';
+import PFHeader from '../components/PFHeader';
 import PFHome from '../components/PFHome';
 import PFPortfolio from '../components/PFPortfolio';
 import PFItem from '../components/PFItem';

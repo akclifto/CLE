@@ -1,0 +1,31 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.4.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'java'
+}
+
+group = 'react'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '14'
+
+compileJava.options.encoding = 'UTF-8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation ('org.springframework.boot:spring-boot-starter-web')
+	implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+	
+	runtime ('com.h2database:h2')
+	// implementation('org.springframework.boot:spring-boot-starter-test')
+}
+
+springBoot {
+	mainClassName= 'react.springboot.SpringbootBackendApplication'
+}
+
+test {
+	useJUnitPlatform()
+}

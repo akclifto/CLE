@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import AppRouter from './routers/AppRouter';
 import configStore from './store/configStore';
 import { addExpense } from './actions/expenses';
@@ -25,6 +26,11 @@ console.log(visExpenses);
 
 // store.dispatch(getVisibleExpenses());
 
+const jsx = ( 
+     <Provider store = {store}>
+        <AppRouter />
+     </Provider>
+    );
 
-ReactDOM.render(<AppRouter/>, document.getElementById('app'));
+ReactDOM.render(jsx, document.getElementById('app'));
 

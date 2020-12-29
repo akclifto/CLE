@@ -17,7 +17,14 @@ console.log(store.getState());
 store.dispatch(addExpense( { description: 'Water bill' } ));
 store.dispatch(addExpense({description: 'Gas bill', amount: 30030}));
 store.dispatch(addExpense({description: 'Tacos Run', amount: 2000}));
-store.dispatch(setTextFilter('wat'));
+store.dispatch(setTextFilter('water'));
+
+//shows dynamic nature of rendered components with redux, "water" will initial be displayed, 
+// then changed to "gas" using funct below
+setTimeout(() => {
+    store.dispatch(setTextFilter('Gas'));
+}, 3000);
+
 console.log(store.getState());
 
 const state = store.getState();

@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom';
 
 
 //Export stateless functional component
-// description, amount, createDate
+// description, amount, createdAt
 
-const ExpenseListItem = ({dispatch, id, description, amount, createDate}) => (
+const ExpenseListItem = ({dispatch, id, description, amount, createdAt}) => (
 
     <div>
         <Link to={`/edit/${id}`}>
             <h3>{description}</h3>
         
         </Link>
-        <p> {amount} - {createDate} </p>
+        <p> {amount} - {createdAt} </p>
 
     </div>
 

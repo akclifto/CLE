@@ -18,7 +18,7 @@ store.dispatch(addExpense( { description: 'Water bill' } ));
 store.dispatch(addExpense({description: 'Gas bill', amount: 30030, createDate: '01/01/2020'}));
 store.dispatch(addExpense({description: 'Tacos Run', amount: 2000, createDate: '05/05/2020' }));
 store.dispatch(addExpense({description: 'Rent bill', amount: 100000, createDate: '06/02/2020'}));
-store.dispatch(setTextFilter('water'));
+// store.dispatch(setTextFilter('water'));
 
 //shows dynamic nature of rendered components with redux, "water" will initial be displayed, 
 // then changed to "gas" using funct below

@@ -9,14 +9,14 @@ export class EditExpense extends React.Component {
         (expense) => {
             //dispatch the action to edit the expense
             // redirect back to the dashboard
-            this.props.editExpense(props.expense.id, expense);
+            this.props.editExpense(this.props.expense.id, expense);
             this.props.history.push('/');
             // console.log('updated', expense);
         }
     };
 
     onRemove = () => {
-        this.props.removeExpense({ id: props.expense.id });
+        this.props.removeExpense({ id: this.props.expense.id });
         this.props.history.push('/');
     };
 
@@ -36,7 +36,7 @@ export class EditExpense extends React.Component {
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        editExpense: (id, expense) => dispatch(editExpense(expense)),
+        editExpense: (id, expense) => dispatch(editExpense(id, expense)),
         removeExpense: (data) => dispatch(removeExpense(data))
     }
 }
